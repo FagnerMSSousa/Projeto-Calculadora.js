@@ -25,6 +25,18 @@ const allowedKeys = [
   " ",
 ];
 
+document.querySelectorAll(".charKey").forEach(function (charKeyBtn) {
+  charKeyBtn.addEventListener("click", function () {
+    const value = charKeyBtn.dataset.value;
+    input.value += value;
+  });
+});
+
+document.getElementById("clear").addEventListener("click", function () {
+  input.value = "";
+  input.focus();
+});
+
 input.addEventListener("keydown", function (ev) {
   ev.preventDefault();
   if (allowedKeys.includes(ev.key)) {
@@ -39,6 +51,9 @@ input.addEventListener("keydown", function (ev) {
   }
 });
 
+document.getElementById("equal").addEventListener("click", calculate);
+
 function calculate() {
-  console.log("Calculado!");
+  const result = eval(input.value);
+  resultInput.value = result;
 }
