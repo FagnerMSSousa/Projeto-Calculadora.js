@@ -2,6 +2,7 @@ const main = document.querySelector("main");
 const root = document.querySelector(":root");
 const input = document.getElementById("input");
 const resultInput = document.getElementById("result");
+
 const allowedKeys = [
   "(",
   ")",
@@ -23,3 +24,11 @@ const allowedKeys = [
   "%",
   " ",
 ];
+
+input.addEventListener("keydown", function (ev) {
+  ev.preventDefault();
+  if (allowedKeys.includes(ev.key)) {
+    input.value += ev.key;
+    return;
+  }
+});
